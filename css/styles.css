@@ -1,3 +1,73 @@
-body {
-    background-color: aquamarine;
+:root{
+    --bg: #fffaf5; /* warm off-white */
+    --panel: #fff6f0; /* slightly deeper off-white for panels */
+    --card-text: #1b1b1b; /* dark text for contrast */
+    --accent: #ff4a2a; /* orange-red accent */
+    --muted: #7c7976; /* muted warm gray */
+    --glass: rgba(27,27,27,0.03);
 }
+
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+    margin:0;
+    font-family: Helvetica, Arial, sans-serif;
+    background: linear-gradient(180deg,var(--bg) 0%, #fff6f2 100%);
+    color:var(--card-text);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    letter-spacing: -0.02em;
+    line-height:1.4;
+    padding:32px;
+}
+
+a{color:var(--accent); text-decoration:none}
+
+header[role=banner]{
+    max-width:1100px;
+    margin:0 auto 28px;
+    padding:28px;
+    background: linear-gradient(135deg, var(--panel), rgba(255,255,255,0.8));
+    border-radius:12px;
+    display:flex;
+    gap:24px;
+    align-items:center;
+}
+
+header h1{
+    margin:0 0 6px 0;
+    font-size:2rem;
+    color:var(--card-text);
+    letter-spacing:-0.03em;
+}
+
+header p{margin:0;color:var(--muted)}
+
+main#menu{max-width:1100px;margin:20px auto;padding:24px;background:transparent}
+
+h2{color:var(--card-text);margin-bottom:6px}
+
+.menu-grid{display:flex;flex-wrap:wrap;gap:20px;padding:0;margin:18px 0 40px 0;list-style:none}
+.menu-grid .menu-item{background:var(--panel);
+    border-radius:12px; padding:14px; width:calc(33.333% - 13.333px); box-shadow:0 6px 18px rgba(27,27,27,0.06); border:1px solid rgba(27,27,27,0.04); display:flex; flex-direction:column; gap:10px}
+
+.menu-item dt h4{margin:0;font-size:1.05rem;color:var(--card-text)}
+.menu-item .thumb{width:100%;height:140px;overflow:hidden;border-radius:8px;margin:0}
+.menu-item .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.menu-item .price{font-weight:700;color:var(--accent);margin:0}
+.menu-item .desc{margin:0;color:var(--muted);font-size:0.95rem}
+
+/* responsive */
+@media (max-width:1000px){
+    .menu-grid .menu-item{width:calc(50% - 10px)}
+}
+@media (max-width:640px){
+    body{padding:16px}
+    header{flex-direction:column;align-items:flex-start}
+    .menu-grid .menu-item{width:100%}
+}
+
+footer{max-width:1100px;margin:28px auto;color:var(--muted);text-align:center;padding:8px}
+
+/* small accessibility helpers */
+a:focus{outline:3px solid rgba(255,107,53,0.18);outline-offset:3px}
